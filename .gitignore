@@ -1,0 +1,89 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Environment files
+.env
+.env.*
+
+# macOS (if used in future)
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# Pytest
+.cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre
+.pyre/
+
+# Terraform (if added later)
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# AWS CLI cache
+.awscli/cache/
+
+# Local data dumps
+*.sqlite3
+
+# Pip
+pip-wheel-metadata/
+
+# __init__.py compiled
+*.pyo
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# GitHub Codespaces
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+
+# Test output
+test-output/
+
+# Project-specific
+# (Add other folders you want ignored below)
+
