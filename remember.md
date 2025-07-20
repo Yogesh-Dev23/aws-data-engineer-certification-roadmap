@@ -1,6 +1,7 @@
 AVRO - write - -> AWW  
 
-Parquet = reed -> PR
+Parquet = reed -> PR  
+schema evolution => glue schema registry
 
 
 
