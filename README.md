@@ -34,10 +34,43 @@ We will use **12 clear, sequential folders** for each week:
 Run this **in your local cloned repo root**:
 
 ```bash
-for i in $(seq -w 1 12); do
-  title=$(grep -oP "(?<=week${i}_)[^/]+" README.md)
-  mkdir -p week${i}_${title}/{docs,scripts,labs}
-done
+# Read README.md lines
+$lines = Get-Content .\README.md
+
+for ($i = 1; $i -le 12; $i++) {
+    $num = "{0:D2}" -f $i
+
+    # Find the matching line for weekXX_
+    $matchedLine = $lines | Where-Object { $_ -match "week${num}_" } | Select-Object -First 1
+
+    if ($null -ne $matchedLine) {
+        # Use single quotes to avoid escape issues, match text between backticks
+        if ($matchedLine -match '`([^`]+)`') {
+            $folderName = $matches[1].TrimEnd("/")
+        } else {
+            Write-Host "⚠️ Could not extract folder name for week$num, skipping..."
+            continue
+        }
+
+        # Create the week folder
+        if (-not (Test-Path $folderName)) {
+            New-Item -ItemType Directory -Path $folderName | Out-Null
+        }
+
+        # Create docs, labs, scripts inside the week folder
+        foreach ($sub in "docs", "labs", "scripts") {
+            $subPath = Join-Path $folderName $sub
+            if (-not (Test-Path $subPath)) {
+                New-Item -ItemType Directory -Path $subPath | Out-Null
+            }
+        }
+
+        Write-Host "✅ Created: $folderName with docs, labs, scripts"
+    } else {
+        Write-Host "⚠️ No matching line found for week$num, skipping..."
+    }
+}
+
 ```
 
 ---
