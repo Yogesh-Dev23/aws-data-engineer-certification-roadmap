@@ -1,50 +1,28 @@
 # AWS Data Engineer Certification Practical Roadmap
 
-This repository is for **practical hands-on preparation** for the **AWS Data Engineer Associate Certification**, structured week-by-week for **clarity, tracking, and easy resumption**.
+This repository is for **practical hands-on preparation** for the **AWS Data Engineer Associate Certification**, structured **week-by-week for clarity, tracking, and easy resumption** while allowing **flexibility in the learning order**.
 
 ---
 
-## 📂 Folder Structure
+## Folder Structure
 
-We will use **12 clear, sequential folders** for each week:
+✨ **Flexible, on-demand creation:**
 
-* `week01_data_fundamentals_and_sql/`
-* `week02_cli_and_terraform/`
-* `week03_iam_networking_encryption/`
-* `week04_spark_hadoop_local/`
-* `week05_emr_and_spark_on_aws/`
-* `week06_s3_and_glue_catalog/`
-* `week07_glue_etl_pyspark/`
-* `week08_redshift_deep_dive/`
-* `week09_serverless_and_streaming/`
-* `week10_airflow_orchestration/`
-* `week11_monitoring_logging_security/`
-* `week12_exam_prep_and_mocks/`
+* Create `weekXX_topic/` folders **manually as you progress**.
+* Start with **any topic (e.g., S3 before SQL)** based on your plan.
+* Each `weekXX_topic/` folder may contain:
 
-👉 Each folder will contain:
+  * `cheat_sheet.md` → Short notes, diagrams, CLI commands, quick recalls.
+  * `scripts/` → Python, PySpark, Terraform, or shell scripts.
+  * `labs/` → Practice notebooks or structured exercises.
 
-* `docs/` → Notes and summaries
-* `scripts/` → Python/PySpark/Terraform scripts
-* `labs/` → Practice exercises and notebooks
+⚡ **No rigid structure enforced**; build structure based on **actual workflows**.
 
 ---
 
-## ⚡ Commands to Create Week Folders
+## Local Environment Setup
 
-Run this **in your local cloned repo root**:
-
-```bash
-for i in $(seq -w 1 12); do
-  title=$(grep -oP "(?<=week${i}_)[^/]+" README.md)
-  mkdir -p week${i}_${title}/{docs,scripts,labs}
-done
-```
-
----
-
-## 👨‍💻 Local Environment Setup
-
-### 1. Clone this repo locally:
+### 1️⃣ Clone your repository locally:
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/aws-data-engineer-certification-roadmap.git
@@ -53,7 +31,7 @@ cd aws-data-engineer-certification-roadmap
 
 ---
 
-### 2. Create a Python virtual environment:
+### 2️⃣ Create a Python virtual environment:
 
 ```bash
 python -m venv venv
@@ -63,7 +41,7 @@ Activate:
 
 * **Windows:**
 
-  ```bash
+  ```powershell
   .\venv\Scripts\activate
   ```
 * **Mac/Linux:**
@@ -74,7 +52,9 @@ Activate:
 
 ---
 
-### 3. Install dependencies (initially empty, update as you add):
+### 3️⃣ Install dependencies:
+
+Initially, your `requirements.txt` will be empty. As you add packages:
 
 ```bash
 pip install -r requirements.txt
@@ -82,7 +62,9 @@ pip install -r requirements.txt
 
 ---
 
-### 4. Add new dependencies as you progress:
+### 4️⃣ Add new dependencies as you progress:
+
+When you add packages:
 
 ```bash
 pip install NEW_PACKAGE
@@ -91,34 +73,34 @@ pip freeze > requirements.txt
 
 ---
 
-## ☁️ AWS EC2 Setup for Hands-On
+## AWS EC2 Workflow
 
-### 1. Generate or use an existing SSH key pair from AWS Console:
+Use an **EC2 instance for heavier or AWS-integrated workloads while keeping consistency with local environments**.
 
-* Go to **EC2 → Key Pairs → Create key pair**.
+### 1️⃣ Generate or use an existing SSH key pair:
+
+* **AWS Console → EC2 → Key Pairs → Create key pair**
 * Download `your-key.pem` securely.
 
 ---
 
-### 2. Launch a t2.micro EC2 instance (Free Tier) from AWS Console:
+### 2️⃣ Launch an EC2 instance:
 
-* Amazon Linux 2023 or Ubuntu 22.04 LTS.
-* Attach the **key pair you created**.
+* Use Amazon Linux 2023 or Ubuntu 22.04 LTS.
+* Attach the key pair you created.
 * Allow SSH (port 22) in the security group.
 
 ---
 
-### 3. SSH into your EC2 instance from your local machine:
+### 3️⃣ SSH into your EC2 instance:
 
 ```bash
 ssh -i /path/to/your-key.pem ec2-user@YOUR_EC2_PUBLIC_IP
 ```
 
-🚨 Replace `/path/to/your-key.pem` and `YOUR_EC2_PUBLIC_IP`.
-
 ---
 
-### 4. Clone your repo on the EC2 instance:
+### 4️⃣ Clone your repository on EC2:
 
 ```bash
 mkdir -p ~/projects
@@ -129,56 +111,56 @@ cd aws-data-engineer-certification-roadmap
 
 ---
 
-### 5. On the EC2 instance:
+### 5️⃣ Create and activate a virtual environment on EC2:
 
-* Install Python if needed (`sudo yum install python3` or `sudo apt install python3-pip`).
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-* Create and activate a virtual environment:
+Install your synced dependencies:
 
-  ```bash
-  python3 -m venv venv
-  source venv/bin/activate
-  ```
-
-* Install dependencies:
-
-  ```bash
-  pip install -r requirements.txt
-  ```
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
-## 🔄 Workflow Recap
+## Workflow Recap
 
-👉 **Do your week’s work inside `weekXX_*` folders.**
-👉 Commit and push regularly:
+✅ **Do your week's work inside `weekXX_topic/` folders you create manually.**
+✅ Keep a `cheat_sheet.md` for each week with **commands, notes, and references**.
+✅ Version your work with Git:
 
 ```bash
 git add .
-git commit -m "Completed Week X lab"
-git push origin main
+git commit -m "Completed Week 06 S3 and Glue lab"
+git push
 ```
 
-👉 **SSH into EC2 when needed to test workloads (PySpark, AWS CLI, etc.).**
-👉 Pull updates:
+✅ On EC2, pull updates:
 
 ```bash
 git pull
 ```
 
----
-
-## 💡 Notes
-
-* Stopping your EC2 retains the disk (EBS). You can restart without data loss.
-* `terraform` usage will be added later to automate EC2, S3, IAM.
-* You can add `notebooks/` folders if working with Jupyter locally or on EC2.
-* Track your weekly progress using a `progress.md` in each folder if desired.
+✅ Use your **virtual environment (`venv`) consistently on local and EC2**.
 
 ---
 
-**✨ You are now ready for systematic, organized hands-on AWS Data Engineer certification preparation.**
+## Tips
+
+✅ Stop EC2 when not in use to avoid costs; data persists on restart.
+✅ Use `notebooks/` inside `weekXX_topic/` if you need Jupyter workflows.
+✅ Add `terraform/` under a week if you begin Infra as Code practice.
+✅ Update `requirements.txt` regularly to maintain environment reproducibility.
 
 ---
 
-### 👩‍💻 Happy Learning!
+## Ready to Learn
+
+You are now set up for **structured yet flexible, clean, and reproducible AWS Data Engineer certification preparation** with **low RAM efficiency and consistent workflow across local and EC2 environments**.
+
+---
+
+### Happy Learning and Building!
