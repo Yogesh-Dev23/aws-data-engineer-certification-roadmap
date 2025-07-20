@@ -1,3 +1,8 @@
+AVRO - write - -> AWW
+Parquet = reed -> PR
+
+
+
 ## hadoop vs spark
 
 | Feature    | Hadoop MapReduce             | Spark                                   |
