@@ -3,6 +3,13 @@ AVRO - write - -> AWW
 Parquet = reed -> PR  
 schema evolution => glue schema registry
 
+• Amazon S3 Standard - General Purpose
+• Amazon S3 Standard-Infrequent Access (IA)
+• Amazon S3 One Zone-Infrequent Access
+• Amazon S3 Glacier Instant Retrieval   | I
+• Amazon S3 Glacier Flexible Retrieval  | F
+• Amazon S3 Glacier Deep Archive        | De Ar
+• Amazon S3 Intelligent Tiering         | InTier
 
 
 ## hadoop vs spark
