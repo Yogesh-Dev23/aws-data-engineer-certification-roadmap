@@ -32,3 +32,8 @@ schema evolution => glue schema registry
 | **Best for**     | Write-heavy workloads, schema evolution | Read-heavy, analytics                | Hive integration |
 | **Splittable**   | Yes                                     | Yes                                  | Yes              |
 | **AWS Services** | Glue, Athena, EMR                       | Glue, Athena, EMR, Redshift Spectrum | EMR, Hive        |
+
+
+Strorage lens -> one person weraring Lens - > having SCAR -> BP -> Storage Class Account Reginon Bucket Prefix
+
+
