@@ -35,5 +35,6 @@ schema evolution => glue schema registry
 
 
 Strorage lens -> one person weraring Lens - > having SCAR -> BP -> Storage Class Account Reginon Bucket Prefix
+Metrics -> PCO + SAM +  D - SCAM ( SAM ne PCO me SCAM Kia) 
 
 
