@@ -87,3 +87,5 @@ test-output/
 # Project-specific
 # (Add other folders you want ignored below)
 
+# aws information
+aws-user/
