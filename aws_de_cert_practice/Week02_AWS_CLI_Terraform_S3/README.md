@@ -1,16 +1,22 @@
-# Week 2: AWS CLI, Terraform, and S3
+## Mini Project: Private S3 Access via Access Point
 
-This folder contains all the practical exercises and notes for Week 2 of the AWS Data Engineer certification roadmap. The focus is on:
+### Architecture
+IAM User → S3 Access Point → S3 Bucket
+                    ↑
+             S3 Gateway Endpoint (VPC)
 
-1. AWS CLI commands for S3.
-2. Automating S3 setup with Terraform.
-3. Understanding S3 features like versioning, lifecycle rules, and event notifications.
+### What I built
+- Private S3 bucket with SSE-S3
+- S3 Access Point with restrictive policy
+- VPC with private subnet
+- S3 Gateway Endpoint attached to route table
+- Access restricted to VPC using aws:SourceVpc
 
-## Subtopics
-- AWS CLI Basics
-- Terraform Basics
-- S3 Bucket Properties
-- Data Lake Structure
-- Encryption and Security
+### Key Commands
+aws s3 ls "arn:aws:s3:us-east-1:...:accesspoint/..."
+aws s3api get-object --bucket "<accesspoint-arn>" --key testfile.txt output.txt
 
-Each subtopic will have its own section with notes and Terraform code examples.
+### Lessons
+- Access Point policies differ from bucket policies
+- Need both AP ARN and AP/object/* in resources
+- VPC endpoints control *network path*, not permissions
