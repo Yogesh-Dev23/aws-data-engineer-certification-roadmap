@@ -6,7 +6,7 @@ resource "aws_kms_key" "this" {
 
   tags = {
     Project = "AWS Data Engineer Roadmap"
-    Week    = "03"
+    Week    = "03"a
   }
 }
 

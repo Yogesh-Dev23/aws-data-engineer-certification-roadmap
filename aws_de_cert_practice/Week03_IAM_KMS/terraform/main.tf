@@ -1,1 +1,1 @@
-// main.tf: Entry point for Terraform configuration
+data "aws_caller_identity" "this" {}

@@ -1,2 +1,2 @@
 hello kms
-
+aws kms decrypt --ciphertext-blob fileb://experiments/encrypted.b64 --output text --query Plaintext | % { [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) } | Set-Content experiments/decrypted.txt
